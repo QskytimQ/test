@@ -1,20 +1,28 @@
 language: php
 
+services:
+  - mysql
+
 php:
-  - 5.6
+  - 7.1
 
 sudo: false
 
+before_install:
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS test;'
+
 install:
-  - composer install --prefer-dist --no-dev --optimize-autoloader --quiet
+  - composer install --prefer-dist --optimize-autoloader --quiet
   - cp .env.travis .env
   - php artisan key:generate
+
+script:
+  - ./vendor/edgedesign/phpqa/phpqa --output cli --ignoredDirs bootstrap,database,resource,storage,vendor --tools phpcs:0,phpmd:2,phpcpd:0,phpmetrics,pdepend
+  - phpunit -c phpunit.xml --coverage-text
 
 notifications:
   email:
     recipients:
-      - timwu000@gmail.com
+      - s1410432005@gms.nutc.edu.tw
     on_success: always
-    on_failure: never
-
-script: phpunit 
+    on_failure: always
