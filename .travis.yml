@@ -9,6 +9,7 @@ install:
   - composer install --prefer-dist --optimize-autoloader --quiet
   - cp .env.travis .env
   - php artisan key:generate
+  - php -v
 
 script:
   - phpunit -c phpunit.xml --coverage-text
