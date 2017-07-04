@@ -1,0 +1,18 @@
+language: php
+
+php:
+  - 5.6
+
+sudo: false
+
+install:
+  - composer install --prefer-dist --no-dev --optimize-autoloader --quiet
+
+notifications:
+  email:
+    recipients:
+      - timwu000@gmail.com
+    on_success: always
+    on_failure: never
+
+script: phpunit -c phpunit.xml --coverage-text

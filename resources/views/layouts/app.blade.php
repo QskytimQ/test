@@ -25,7 +25,7 @@
         <nav class="navbar navbar-default navbar-static-top">
             <div class=" navbar-brand" style="float:left">
                 {{Form::open(["route"=>"routeSreach",'method'=>'post'])}}
-                    {{Form::text('sreachKey')}}
+                    {{ Form::text('sreachKey', null, array('placeholder' => '輸入並搜尋',))}} 
                 {{Form::close()}}
             </div>
             <div class="container">

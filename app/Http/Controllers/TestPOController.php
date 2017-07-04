@@ -83,6 +83,7 @@ class TestPOController extends Controller
         return redirect()->route("routeshow",$id);
     }
     public function sreach(Request $request){
+        // dd($request->sreachKey);
         $sreach = testPost::where('title','like','%' .$request->sreachKey. '%')->get(); //sreach
         // dd($request->sreachKey);
         // dd($sreach);
