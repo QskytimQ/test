@@ -8,6 +8,7 @@ sudo: false
 install:
   - composer install --prefer-dist --no-dev --optimize-autoloader --quiet
   - cp .env.travis .env
+  - php artisan key:generate
 
 notifications:
   email:
