@@ -7,6 +7,7 @@ sudo: false
 
 install:
   - composer install --prefer-dist --no-dev --optimize-autoloader --quiet
+  - cp .env.travis .env
 
 notifications:
   email:
@@ -15,4 +16,4 @@ notifications:
     on_success: always
     on_failure: never
 
-script: phpunit -c phpunit.xml --coverage-text
+script: phpunit 
